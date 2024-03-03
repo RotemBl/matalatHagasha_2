@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navgraph"
+    app:startDestination="@id/logInFragment">
+
+    <fragment
+        android:id="@+id/logInFragment"
+        android:name="com.example.shoppingmanagmentapp.fragments.LogInFragment"
+        android:label="fragment_log_in"
+        tools:layout="@layout/fragment_log_in" >
+        <action
+            android:id="@+id/action_logInFragment_to_shoppingScreenFragment"
+            app:destination="@id/shoppingScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/shoppingScreenFragment"
+        android:name="com.example.shoppingmanagmentapp.fragments.ShoppingScreenFragment"
+        android:label="fragment_shopping_screen"
+        tools:layout="@layout/fragment_shopping_screen" >
+        <action
+            android:id="@+id/action_shoppingScreenFragment_to_fragmentMyCart"
+            app:destination="@id/fragmentMyCart" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentMyCart"
+        android:name="com.example.shoppingmanagmentapp.fragments.FragmentMyCart"
+        android:label="FragmentMyCart" >
+        <action
+            android:id="@+id/action_fragmentMyCart_to_shoppingScreenFragment"
+            app:destination="@id/shoppingScreenFragment" />
+    </fragment>
+</navigation>
