@@ -18,7 +18,9 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.shoppingmanagmentapp.DataFile.CartItems;
 import com.example.shoppingmanagmentapp.DataFile.DataModle;
 import com.example.shoppingmanagmentapp.DataFile.MyData;
 import com.example.shoppingmanagmentapp.DataFile.customeAdapter;
@@ -104,7 +106,7 @@ public class ShoppingScreenFragment extends Fragment {
 
 
         View view =  inflater.inflate(R.layout.fragment_shopping_screen, container, false);
-        Button goToMyCartButton = view.findViewById(R.id.goToMyCartButton);
+        Button addToCartButton = view.findViewById(R.id.addToCardButton);
 
 
 
@@ -132,17 +134,10 @@ public class ShoppingScreenFragment extends Fragment {
          adapter = new customeAdapter(dataSet);
          recycleView.setAdapter(adapter);
 
-        goToMyCartButton.setOnClickListener(new View.OnClickListener(){
 
 
-            public void onClick(View v) {
-               // Bundle bundle = new Bundle();
-               // bundle.putParcelableArrayList("dataSet", dataSet);
 
-                Navigation.findNavController(view).navigate(R.id.action_shoppingScreenFragment_to_fragmentMyCart);
 
-            }
-        });
 
 
 

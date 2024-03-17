@@ -12,12 +12,6 @@
         android:layout_height="wrap_content"
         android:text="TextView" />
 
-    <Button
-        android:id="@+id/goToMyCartButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Move To My Cart" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/res"
         android:layout_width="match_parent"

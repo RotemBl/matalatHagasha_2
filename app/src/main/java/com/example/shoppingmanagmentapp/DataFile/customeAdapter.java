@@ -16,7 +16,7 @@ import com.example.shoppingmanagmentapp.R;
 import java.util.ArrayList;
 
 public class customeAdapter extends RecyclerView.Adapter<customeAdapter.MyViewHolder> {
-    static ArrayList<DataModle> dataset;
+     private ArrayList<DataModle> dataset;
 
     public customeAdapter(ArrayList<DataModle> dataSet) {
         this.dataset = dataSet;
@@ -34,37 +34,31 @@ public class customeAdapter extends RecyclerView.Adapter<customeAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        TextView textViewName = holder.textViewName;
-        TextView textViewDescription = holder.textViewquantity;
-        ImageView imageViewCharacter =holder.imageViewitem;
 
-        textViewName.setText(dataset.get(position).getItemName());
-        textViewDescription.setText(String.valueOf(dataset.get(position).getQuantity()));
-        imageViewCharacter.setImageResource(dataset.get(position).getImage());
 
 
         DataModle currentItem = dataset.get(position);
+
         holder.textViewName.setText(currentItem.getItemName());
         holder.textViewquantity.setText(String.valueOf(currentItem.getQuantity()));
         holder.imageViewitem.setImageResource(currentItem.getImage());
         holder.plusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Increment the quantity for the corresponding item
-                currentItem.setQuantity(currentItem.getQuantity() + 1);
-                // Update the TextView with the new quantity
-                holder.textViewquantity.setText(String.valueOf(currentItem.getQuantity()));
+                int quantity = currentItem.getQuantity();
+                quantity++;
+                currentItem.setQuantity(quantity);
+                holder.textViewquantity.setText(String.valueOf(quantity));
             }
         });
         holder.minusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Ensure quantity is greater than 0 before decrementing
-                if (currentItem.getQuantity() > 0) {
-                    // Decrement the quantity for the corresponding item
-                    currentItem.setQuantity(currentItem.getQuantity() - 1);
-                    // Update the TextView with the new quantity
-                    holder.textViewquantity.setText(String.valueOf(currentItem.getQuantity()));
+                int quantity = currentItem.getQuantity();
+                if (quantity > 0) {
+                    quantity--;
+                    currentItem.setQuantity(quantity);
+                    holder.textViewquantity.setText(String.valueOf(quantity));
                 }
             }
         });
@@ -73,19 +67,12 @@ public class customeAdapter extends RecyclerView.Adapter<customeAdapter.MyViewHo
         holder.addToCardButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int position = holder.getAdapterPosition();
-                if (position != RecyclerView.NO_POSITION) {
-                    // Retrieve the current item
-                    DataModle currentItem = dataset.get(position);
+                // Add the current item to the cart
+                CartItems cartItem = new CartItems(currentItem.getItemName(), currentItem.getQuantity(), currentItem.getImage());
+                MyData.cartItemsList.add(cartItem);
 
-                    // Add the current item to the cart
-
-                    CartItems cartItem = new CartItems(currentItem.getItemName(), currentItem.getQuantity(), currentItem.getImage());
-                    MyData.cartItemsList.add(cartItem);
-
-                    // Optionally, display a toast message
-                    Toast.makeText(v.getContext(), "Item added to cart", Toast.LENGTH_SHORT).show();
-                }
+                // Optionally, display a toast message
+                Toast.makeText(v.getContext(), "Item added to cart", Toast.LENGTH_SHORT).show();
             }
         });
     }

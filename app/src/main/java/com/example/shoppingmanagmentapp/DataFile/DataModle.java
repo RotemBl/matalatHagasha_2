@@ -1,6 +1,9 @@
 package com.example.shoppingmanagmentapp.DataFile;
 
-public class DataModle {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class DataModle  {
     private String itemName;
     private int quantity;
     private int image;
@@ -34,6 +37,7 @@ public class DataModle {
         this.quantity = quantity;
         this.image = image;
     }
+
 
 
 

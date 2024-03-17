@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.shoppingmanagmentapp.DataFile.CartItems;
+import com.example.shoppingmanagmentapp.DataFile.DataModle;
 import com.example.shoppingmanagmentapp.DataFile.MyData;
 import com.example.shoppingmanagmentapp.DataFile.Users;
 import com.example.shoppingmanagmentapp.R;
@@ -88,7 +91,6 @@ public class LogInFragment extends Fragment {
         EditText singInphonetext = view.findViewById(R.id.signInTextPhone);
 
 
-
         singInButton.setOnClickListener(new View.OnClickListener(){
             public  void onClick(View v1)
             {
@@ -139,6 +141,8 @@ public class LogInFragment extends Fragment {
 
             }
         });
+
+
 
 
         return view;
